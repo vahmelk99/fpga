@@ -21,8 +21,6 @@ PROJECT_SOURCES =                               \
     layer_between_project_and_hackathon_top.sv  \
     project.v                                   \
 
-    # TODO: add SystemVerilog files if necessary
-
 ifneq ($(GATES),yes)
 
 # RTL simulation:

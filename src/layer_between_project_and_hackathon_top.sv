@@ -26,7 +26,6 @@ module layer_between_project_and_hackathon_top
 
     localparam clk_mhz = 25;
 
-    // TODO: Think how to use this signal for self-diagnostics
     assign sticky_failure = 1'b0;
 
     //------------------------------------------------------------------------

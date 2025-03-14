@@ -98,7 +98,7 @@ module tm1638_board_controller
     `else
 
     logic             reset_syn1;
-    logic             reset_syn2 = 0; // TODO: REMOVE initialization - is not synthesizable in ASIC
+    logic             reset_syn2;
     always @(posedge clk) begin
         reset_syn1 <= rst;
         reset_syn2 <= reset_syn1;
