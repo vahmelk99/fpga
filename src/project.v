@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module hackathon_top
+module tt_um_hackathon_top
 (
     input  [7:0] ui_in,    // Dedicated inputs
     output [7:0] uo_out,   // Dedicated outputs
