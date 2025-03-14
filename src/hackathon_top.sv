@@ -24,7 +24,7 @@ module hackathon_top
     output logic [5:0] green,
     output logic [4:0] blue,
 
-    // inout  logic [2:0] gpio
+    inout  logic [2:0] gpio
 );
     // logic random;
     // always_comb
@@ -41,7 +41,7 @@ module hackathon_top
 
                wx            = 5,
                wy            = 100,
-               min_wy        = 25,
+               min_wy        = 50,
                br            = 14,
                d_speed       = 1,
                start_speed   = 1,
@@ -163,10 +163,10 @@ module hackathon_top
 
             if (state == STATE_SHOOT)
             begin
-                if (y1 + right1 - left1 < screen_height - paddle_height & y1 + right1 - left1 > 0 )
-                    y1 = y1 + right1 - left1;
-                if (y0 + right0 - left0 < screen_height - paddle_height & y0 + right0 - left0 > 0 )
-                    y0 = y0 + right0 - left0;
+                if (y1 + right1 * bdy - left1 * bdy < screen_height - paddle_height & y1 + right1 * bdy - left1 * bdy > 0 )
+                    y1 = y1 + right1 * bdy - left1 * bdy;
+                if (y0 + right0 * bdy - left0 * bdy < screen_height - paddle_height & y0 + right0 * bdy - left0 * bdy > 0 )
+                    y0 = y0 + right0 * bdy - left0 * bdy;
 
             end
         end
@@ -217,7 +217,7 @@ module hackathon_top
             end
             else if (state == STATE_SHOOT)
             begin
-                if (countdown[9:0] == '0)
+                if (countdown[8:0] == '0)
                 begin 
                     if(paddle_height - (wy - min_wy) / 8 > min_wy)
                         paddle_height <= paddle_height - (wy - min_wy) / 8;
@@ -225,8 +225,6 @@ module hackathon_top
                     hardness_counter <= hardness_counter + 1;
                     if(hardness_counter == 4 | hardness_counter == 8)
                     begin
-                    if(bdx + d_speed < max_speed)
-                        bdx = bdx + d_speed;
                     if(bdy + d_speed < max_speed)
                         bdy = bdy + d_speed;
                     end
@@ -357,7 +355,7 @@ module hackathon_top
                     green = max_green;
                     blue = max_blue;
                 end
-                else if(hardness_counter <= 7)
+                else if(hardness_counter <= 8)
                 begin
                     blue = max_blue;
                 end
